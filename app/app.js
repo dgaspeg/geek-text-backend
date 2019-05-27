@@ -5,8 +5,14 @@ const app = express();
 const bodyParser = require('body-parser');
 var helmet = require('helmet');
 const errorHandler = require('./middleware/error-handler.middleware');
+const passport = require('passport');
+require('./security/passport.strategy')(passport);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(helmet());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -17,7 +23,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-const securityRoutes = require('./security/security.router');
+const securityRoutes = require('./security/security.router')(passport);
 app.use('/oauth', securityRoutes);
 app.use(errorHandler);
 
