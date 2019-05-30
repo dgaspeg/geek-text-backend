@@ -11,17 +11,16 @@ module.exports = (passport) => {
 		});
 	});
 	
-	router.post('/authenticate', passport.authenticate('local', { }), (req, res, next) => {
+	router.post('/authenticate', passport.authenticate('local', { }), async (req, res, next) => {
 		const token = await securityService.login(req.user);
-		console.log(JSON.stringify(token));
 		res.json({
-			token: "test"
+			token: token
 		});
 	});
 
 	router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 		res.json({
-			test: 'test'
+			test: 'Arian Profile'
 		});
 	});
 
