@@ -12,7 +12,7 @@ class SecurityService {
 	 * The function passes the stored document in the database.
 	 * @param user User object to give access.
 	 */
-	login(user) {
+	async login(user) {
 		const token = jwt.sign({
 			data: user
 		  }, '50cd3e348ff2487f888a0b56f90c750a', 

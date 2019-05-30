@@ -12,9 +12,10 @@ module.exports = (passport) => {
 	});
 	
 	router.post('/authenticate', passport.authenticate('local', { }), (req, res, next) => {
-		const token = securityService.login(req.user);
+		const token = await securityService.login(req.user);
+		console.log(JSON.stringify(token));
 		res.json({
-			token: token
+			token: "test"
 		});
 	});
 

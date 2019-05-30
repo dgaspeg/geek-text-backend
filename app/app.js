@@ -25,6 +25,9 @@ app.use((req, res, next) => {
 
 const securityRoutes = require('./security/security.router')(passport);
 app.use('/oauth', securityRoutes);
+const ratingsRoutes = require('./ratings/ratings.router')();
+app.use('/ratings', ratingsRoutes);
+
 app.use(errorHandler);
 
 module.exports = app;

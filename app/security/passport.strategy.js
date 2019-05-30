@@ -1,6 +1,6 @@
 var Strategy = require('passport-local').Strategy;
-const JWTStrategy = require("passport-jwt").Strategy;
-const ExtractJWT = require("passport-jwt").ExtractJwt;
+const JWTStrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 module.exports = (passport) => {
 	passport.serializeUser((user, callback) => {
