@@ -5,6 +5,14 @@ const app = express();
 const bodyParser = require('body-parser');
 var helmet = require('helmet');
 const errorHandler = require('./middleware/error-handler.middleware');
+
+const firebase = require('firebase-admin');
+const firebaseAccountConfig = require('../firebase-config.json');
+firebase.initializeApp({
+	credential: firebase.credential.cert(firebaseAccountConfig),
+	databaseURL: 'https://geektext002.firebaseio.com'
+});
+
 const passport = require('passport');
 require('./security/passport.strategy')(passport);
 
