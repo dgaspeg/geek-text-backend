@@ -36,6 +36,9 @@ app.use('/oauth', securityRoutes);
 const ratingsRoutes = require('./ratings/ratings.router')();
 app.use('/ratings', ratingsRoutes);
 
+const commentRoutes = require('./comments/comments.router')();
+app.use('/comments', commentRoutes);
+
 app.use(errorHandler);
 
 module.exports = app;
